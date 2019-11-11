@@ -26,6 +26,22 @@
         display: block;
         height: 100%;
       }
+      ._custom_tabs{
+        margin-bottom: -60px;
+        display: flex;
+      }
+      ._custom_tabs ._item_tab {
+        padding: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+      }
+      ._custom_tabs ._item_tab._active {
+        border-bottom: 2px solid white;
+      }
 
       .container {
         min-height: 80%;
@@ -80,13 +96,12 @@
       active="[[active]]"
     >
       <div class="hero-title highlight-font">{$ heroSettings.schedule.title $}</div>
-      <p class="hero-description">{$ heroSettings.schedule.description $}</p>
       <sticky-element slot="bottom" active="[[active]]">
         <header-bottom-toolbar></header-bottom-toolbar>
       </sticky-element>
     </hero-block>
 
-    <paper-progress indeterminate hidden$="[[contentLoaderVisibility]]"></paper-progress>
+    <!-- <paper-progress indeterminate hidden$="[[contentLoaderVisibility]]"></paper-progress> -->
 
     <filter-menu
       filters="[[_filters]]"
@@ -115,6 +130,7 @@
         selected="[[subRoute]]"
         selected-attribute="active"
       >
+
         <template is="dom-repeat" items="[[schedule]]" as="day">
           <schedule-day
             name$="[[day.date]]"
@@ -263,7 +279,6 @@
         this.set('_selectedFilters', this.parseQueryParamsFilters(queryParams));
       }
     }
-
     window.customElements.define(SchedulePage.is, SchedulePage);
 
   </script>

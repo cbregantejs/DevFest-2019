@@ -7,6 +7,7 @@
 
 <dom-module id="schedule-day">
   <template>
+
     <style include="shared-styles flex flex-alignment positioning">
       :host {
         display: block;
@@ -47,6 +48,13 @@
         --iron-icon-width: 14px;
         margin-right: 8px;
       }
+    
+      .grid_image{
+        width: 100%;
+      }
+      .grid_image img{
+       width: 100%; 
+      }
 
       @media (min-width: 812px) {
         :host {
@@ -84,8 +92,10 @@
       }
 
     </style>
-
-    <div class="grid" style$="--tracks-number: [[day.tracks.length]];">
+    <div class="grid_image">
+      <img src="./images/[[day.dateReadable]].png" alt="[[day.dateReadable]]">
+    </div>
+    <!-- <div class="grid" style$="--tracks-number: [[day.tracks.length]];">
       <template is="dom-repeat" items="[[day.timeslots]]" as="timeslot" index-as="timeslotIndex">
 
         <div id$="[[timeslot.startTime]]" class="start-time" style$="grid-area: [[_getTimePosition(timeslotIndex)]]">
@@ -137,7 +147,7 @@
 
       </template>
     </div>
-
+ -->
   </template>
 
   <script>
